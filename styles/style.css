@@ -1,16 +1,333 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
 .page {
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
+  font-family: var(--main-font), sans-serif;
+  font-variation-settings: "wght" var(--text-weight);
+  font-size: var(--font-size);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main,
+.header {
+  width: var(--page-width);
+  max-width: 100%;
+}
+
+.header {
+  font-family: var(--accent-font), fantasy;
+  font-weight: var(--text-weight);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid var(--color);
+  background-color: var(--background-color);
+  padding: 128px 0;
+  margin: 103px 0;
+}
+
+.header__title {
+  font-size: var(--header-title-font-size);
+  font-weight: var(--text-weight);
+  line-height: 1;
+  margin: 0 0 20px 0;
+}
+
+.header__subtitle {
+  font-size: var(--header-subtitle-font-size);
+  margin: 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+  gap: 50px;
+}
+
+.card {
+  border: 2px solid var(--color);
+  width: 100%;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.card__title {
+  padding: 3px 8px;
+  font-variation-settings: "wght" var(--title-weight);
+  color: var(--color);
+  background-color: var(--background-color);
+  font-size: var(--font-size);
+  margin: 0;
+  border-bottom: 2px solid var(--color);
+}
+
+.card__image-container {
+  position: relative;
+  border-bottom: 2px solid var(--color);
+}
+
+.card__label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-family: var(--accent-font), fantasy;
+  font-size: var(--font-size-card-label);
+  font-weight: var(--text-weight);
+  text-shadow: 0 0 1px var(--shadow-color);
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.card__content {
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.card__text {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image-brightness {
+  filter: brightness(110%);
+}
+
+.image-grayscale {
+  filter: grayscale(75%);
+}
+
+.image-saturate {
+  filter: saturate(400%);
+}
+
+.image-huerotate {
+  filter: hue-rotate(30deg);
+}
+
+.image-invert {
+  filter: invert(90%);
+}
+
+.image-sepia {
+  filter: sepia(90%);
+}
+
+.image-blur {
+  filter: blur(10px);
+}
+
+.image-huerotate-opacity {
+  filter: hue-rotate(100deg) opacity(70%);
+}
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  border: 2px solid var(--color);
+  color: var(--color);
+  cursor: pointer;
+  font-family: var(--accent-font), fantasy;
+  font-size: var(--button-font-size);
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color);
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color);
+  outline-offset: 2px;
+}
+
+.button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.button__text {
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: difference;
+  color: var(--background-color);
+  text-transform: none;
+}
+
+.button__icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  mix-blend-mode: difference;
+}
+
+.card__like-button {
+  padding: 8px 16px;
+  width: 130px;
+}
+
+.card__icon-button {
+  background: none;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 39px;
+  height: 36px;
+  transition: border-color 0.3s ease;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--color);
+  outline-offset: 2px;
+}
+
+.card__icon-button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.save-button {
+  width: 340px;
+  min-height: 55px;
+  gap: 8px;
+}
+
+
+.dialog {
+  border: 2px solid var(--color);
+  padding: 30px 38px;
+  max-width: 354px;
+  background-color: var(--background-color);
+}
+
+.dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.dialog__content {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 27px;
+}
+
+.dialog__icon {
+  width: 50px;
+  height: 50px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.dialog__text {
+  font-family: var(--accent-font), fantasy;
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.dialog__button {
+  width: 100%;
+  min-height: 38px;
+}
+
+@supports ((text-stroke: 1px var(--shadow-color)) or (-webkit-text-stroke: 1px var(--shadow-color))) {
+  .card__label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--shadow-color);
+    text-stroke: 1px var(--shadow-color);
+  }
+}
+
+@media (max-width: 375px) {
+  .header {
+    margin: 100px 0;
+    padding: 120px 0;
+  }
+
+  .card__content {
+    padding: 20px;
+  }
+
+  .card__label {
+    top: 20px;
+    right: 12px;
+  }
+
+  .save-button {
+    width: 312px;
+    flex-direction: column;
+    min-height: 84px;
+    gap: 4px;
+  }
+
+  .button__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dialog {
+    padding: 20px;
+    max-width: 300px;
+  }
+
+  .dialog__content {
+    gap: 12px;
+  }
+
+  .dialog__icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.like-icon {
+  display: block;
+}
+
+.sparks {
+  opacity: 0;
 }
