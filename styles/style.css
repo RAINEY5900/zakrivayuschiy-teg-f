@@ -78,7 +78,7 @@
 
 .card__label {
   position: absolute;
-  top: 25px;
+  top: 250px;
   right: 25px;
   font-family: var(--accent-font), fantasy;
   font-size: var(--font-size-card-label);
@@ -90,14 +90,14 @@
 }
 
 .card__content {
-  padding: 200px 25px;
+  padding: 20px 25px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 250px;
 }
 
 .card__text {
-  margin: 0;
+  margin: 150;
   line-height: 1.4;
 }
 
