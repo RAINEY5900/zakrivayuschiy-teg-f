@@ -3,7 +3,7 @@
   --main-font: "Inter-Variable", sans-serif;
   --accent-font: "PressStart2P", fantasy;
   --text-weight: 400;
-  --title-weight: 785;
+  --title-weight: 700;
   --font-size: 18px;
   --font-size-card-label: 14px;
   --color: #000;
@@ -25,4 +25,9 @@
   --time-step: 0.3s;
   --header-title-font-size: clamp(3.063rem, 1.909rem + 4.92vw, 4.063rem);
   --header-subtitle-font-size: clamp(0.875rem, 0.226rem + 2.77vw, 1.438rem);
+  --unused-var-1: #f0f0f0;
+  --unused-var-2: 10px;
+  --unused-var-3: 0.5s;
+  --unused-var-4: 50%;
+  --unused-var-5: 1.5;
 }

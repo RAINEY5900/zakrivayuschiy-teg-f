@@ -1,40 +1,53 @@
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('Script loaded'); 
-  
-  const likeButtons = document.querySelectorAll('.card__icon-button');
-  console.log('Found like buttons:', likeButtons.length); 
-  
-  likeButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      console.log('Like button clicked'); 
-      
-      const likeIcon = this.querySelector('.like-icon');
-      const likeText = this.closest('.card__actions').querySelector('.button__text');
-      
-      console.log('Like text element:', likeText); 
-      console.log('Current text:', likeText.textContent); 
-      
-      if (likeIcon) {
-        likeIcon.classList.toggle('is-liked');
-        
-        if (likeIcon.classList.contains('is-liked')) {
-          likeText.textContent = 'Unlike';
-        } else {
-          likeText.textContent = 'Like';
-        }
-        
-        console.log('New text:', likeText.textContent); 
-      }
-    });
-  });
+/* этот скрипт использует такие имена классов:
+✦ like-icon — для svg-иконки анимированного сердца
+✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ button__text — для обозначения текстового элемента внутри кнопки
+Если эти классы поменять в HTML, скрипт перестанет работать. Будьте аккуратны.
+*/
 
-  const cardLikeButtons = document.querySelectorAll('.card__like-button');
-  cardLikeButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const iconButton = this.closest('.card__actions').querySelector('.card__icon-button');
-      if (iconButton) {
-        iconButton.click();
-      }
-    });
-  });
+const likeHeartArray = document.querySelectorAll('.like-icon');
+const likeButtonArray = document.querySelectorAll('.card__like-button');
+const iconButtonArray = document.querySelectorAll('.card__icon-button');
+
+iconButtonArray.forEach((iconButton, index) => {
+  iconButton.addEventListener('click', () =>
+    toggleIsLiked(likeHeartArray[index], likeButtonArray[index]));
 });
+
+likeButtonArray.forEach((button, index) => {
+  button.addEventListener('click', () => toggleIsLiked(likeHeartArray[index], button));
+});
+
+// Обработчики для диалога
+const dialog = document.querySelector('.dialog');
+const saveButton = document.querySelector('.card__save-button');
+
+if (saveButton) {
+  saveButton.addEventListener('click', () => {
+    if (dialog) {
+      dialog.showModal();
+    }
+  });
+}
+
+function toggleIsLiked(heart, button) {
+  heart.classList.toggle('is-liked');
+  setButtonText(heart, button);
+}
+
+function setButtonText(heart, button) {
+  if ([...heart.classList].includes('is-liked')) {
+    setTimeout(
+      () => (button.querySelector('.button__text').textContent = 'Unlike'),
+      500
+    );
+  } else {
+    setTimeout(
+      () => (button.querySelector('.button__text').textContent = 'Like'),
+      500
+    );
+  }
+}
