@@ -208,6 +208,10 @@ html {
   position: relative;
   z-index: 1;
 }
+.button__icon_ok {
+  width: 100px;
+  height: 100px;
+}
 
 .card__like-button {
   padding: 8px 16px;
@@ -290,6 +294,10 @@ html {
 .dialog__button {
   width: 100%;
   min-height: 38px;
+}
+
+.dialog__button .button__text {
+  text-transform: uppercase;
 }
 
 .like-icon {
@@ -386,4 +394,5 @@ html {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
-}
+} 
+
