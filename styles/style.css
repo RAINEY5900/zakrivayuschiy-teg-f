@@ -1,6 +1,6 @@
 .page {
   font-family: var(--main-font), sans-serif;
-  font-variation-settings: "wght" var(--text-weight);
+  font-variation-settings: "wght" 410;
   font-size: var(--font-size);
   background-image: var(--background-image);
   background-size: cover;
@@ -11,7 +11,6 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  overflow-x: hidden;
   width: 100%;
 }
 
@@ -33,7 +32,7 @@ html {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px solid var(--color);
+  border: 2px solid var(--text-color);
   background-color: var(--background-color);
   padding: 128px 0;
   margin: 103px 0;
@@ -60,7 +59,7 @@ html {
 }
 
 .card {
-  border: 2px solid var(--color);
+  border: 2px solid var(--text-color);
   width: 100%;
   background-color: var(--background-color);
   display: flex;
@@ -69,17 +68,17 @@ html {
 
 .card__title {
   padding: 3px 8px;
-  font-variation-settings: "wght" var(--title-weight);
-  color: var(--color);
+  font-variation-settings: "wght" 715;
+  color: var(--text-color);
   background-color: var(--background-color);
   font-size: var(--font-size);
   margin: 0;
-  border-bottom: 2px solid var(--color);
+  border-bottom: 2px solid var(--text-color);
 }
 
 .card__image-container {
   position: relative;
-  border-bottom: 2px solid var(--color);
+  border-bottom: 2px solid var(--text-color);
 }
 
 .card__label {
@@ -104,7 +103,7 @@ html {
 
 .card__text {
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.16;
 }
 
 .card__actions {
@@ -118,7 +117,7 @@ html {
 .card__image {
   display: block;
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
 }
@@ -161,8 +160,8 @@ html {
   align-items: center;
   justify-content: center;
   background-color: var(--background-color);
-  border: 2px solid var(--color);
-  color: var(--color);
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
   cursor: pointer;
   font-family: var(--accent-font), fantasy;
   font-size: var(--button-font-size);
@@ -175,7 +174,7 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--color);
+  background: var(--text-color);
   transition: transform 0.5s ease-in-out;
   transform: translateX(-100%);
 }
@@ -189,7 +188,7 @@ html {
 }
 
 .button:focus-visible {
-  filter: drop-shadow(2px 2px 0px var(--color));
+  filter: drop-shadow(2px 2px 0px var(--text-color));
   outline: none;
 }
 
@@ -204,11 +203,26 @@ html {
 .button__icon {
   width: 24px;
   height: 24px;
+  mix-blend-mode: difference;
+  color: var(--background-color);
+  position: relative;
+  z-index: 1;
 }
 
 .card__like-button {
   padding: 8px 16px;
   width: 130px;
+  height: 36px;
+}
+
+.card__like-button:focus {
+  filter: drop-shadow(2px 2px 0px var(--text-color));
+  outline: none;
+}
+
+.card__like-button:focus-visible {
+  filter: drop-shadow(2px 2px 0px var(--text-color));
+  outline: none;
 }
 
 .card__icon-button {
@@ -225,12 +239,13 @@ html {
 }
 
 .card__icon-button:focus {
+  border: 2px solid var(--text-color);
   outline: none;
 }
 
 .card__icon-button:focus-visible {
-  outline: 2px solid var(--color);
-  outline-offset: 2px;
+  border: 2px solid var(--text-color);
+  outline: none;
 }
 
 .save-button {
@@ -240,7 +255,7 @@ html {
 }
 
 .dialog {
-  border: 2px solid var(--color);
+  border: 2px solid var(--text-color);
   padding: 30px 38px;
   max-width: 354px;
   background-color: var(--background-color);
@@ -318,14 +333,10 @@ html {
 
 @media (prefers-contrast: high) {
   :root {
-    --color: #000000;
+    --text-color: #000000;
     --background-color: #ffffff;
     --shadow-color: #000000;
   }
-}
-
-:focus:not(:focus-visible) {
-  outline: none;
 }
 
 @media (max-width: 375px) {

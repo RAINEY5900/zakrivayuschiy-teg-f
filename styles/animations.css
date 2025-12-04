@@ -44,7 +44,7 @@
 }
 
 .like-icon.is-liked {
-  animation: scale 0.3s ease-in 0.1s 1;
+  animation: scale 0.3s ease-in 0.1s 1 alternate;
   transform-origin: center;
 }
 
@@ -56,8 +56,11 @@
   from {
     transform: scale(1);
   }
-  to {
+  50% {
     transform: scale(1.5);
+  }
+  to {
+    transform: scale(1);
   }
 }
 
@@ -65,7 +68,43 @@
   from {
     opacity: 0;
   }
+  50% {
+    opacity: 1;
+  }
   to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .like-icon.is-liked {
+    animation: none;
+  }
+  
+  .like-icon.is-liked .sparks {
+    animation: none;
+    opacity: 1;
+  }
+  
+  .card__icon-button .core,
+  .card__icon-button .main-body,
+  .card__icon-button:hover .core,
+  .card__icon-button:hover .main-body,
+  .card__icon-button:active .core,
+  .card__icon-button:active .main-body,
+  .like-icon.is-liked .core,
+  .like-icon.is-liked .main-body,
+  .like-icon.is-liked .contour {
+    transition: none;
+  }
+}
+
+@supports not (animation: scale 0.3s ease-in) {
+  .like-icon.is-liked {
+    transform: scale(1.2);
+  }
+  
+  .like-icon.is-liked .sparks {
     opacity: 1;
   }
 }
